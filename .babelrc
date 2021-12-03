@@ -1,0 +1,44 @@
+{
+  "env": {
+    "es": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "babel-plugin-typescript-to-proptypes",
+          {
+            "implicitChildren": true
+          }
+        ]
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "@babel/preset-env"
+        ],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "babel-plugin-typescript-to-proptypes",
+          {
+            "implicitChildren": true
+          }
+        ]
+      ]
+    }
+  }
+}

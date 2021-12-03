@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./dist/types",
+    "noImplicitAny": true,
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "target": "es6",
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
+}
