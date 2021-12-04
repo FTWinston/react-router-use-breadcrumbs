@@ -6,7 +6,7 @@ import { IBreadcrumb } from './IBreadcrumb';
 
 export function useBreadcrumb(
     title: React.ReactElement | string,
-    tag?: unknown
+    data?: unknown
 ) {
     const [id] = useState(() => UUID());
 
@@ -15,8 +15,8 @@ export function useBreadcrumb(
     const dispatch = useContext(BreadcrumbDispatchContext);
 
     const crumb: IBreadcrumb = useMemo(
-        () => ({ title, tag, to: { pathname, search, hash } }),
-        [pathname, search, hash, title, tag]
+        () => ({ title, data, to: { pathname, search, hash } }),
+        [pathname, search, hash, title, data]
     );
 
     useEffect(() => {
