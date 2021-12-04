@@ -94,8 +94,8 @@ export const ExampleRoutes = () => {
     return (
         <Routes>
             <Route index element={<ExampleHome />} />
-            <Route path="area1/*" element={<ExampleSection1 />} />
-            <Route path="area2/*" element={<ExampleSection2 />} />
+            <Route path="section1/*" element={<ExampleSection1 />} />
+            <Route path="section2/*" element={<ExampleSection2 />} />
             <Route path="about" element={<ExampleAbout />} />
         </Routes>
     );
