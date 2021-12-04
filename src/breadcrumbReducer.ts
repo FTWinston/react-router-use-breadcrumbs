@@ -5,47 +5,50 @@ export interface IdentifiableCrumb {
     crumb: IBreadcrumb;
 }
 
+export interface BreadcrumbState {
+    crumbsById: Record<string, IBreadcrumb>;
+    crumbTrail: IBreadcrumb[];
+}
+
 export type BreadcrumbAction =
     | {
-          type: 'ADD';
+          type: 'SET';
           id: string;
           crumb: IBreadcrumb;
       }
     | {
-          type: 'UPDATE';
-          id: string;
-          crumb: IBreadcrumb;
-      }
-    | {
-          type: 'REMOVE';
+          type: 'DEL';
           id: string;
       };
 
+function buildState(crumbsById: Record<string, IBreadcrumb>) {
+    return {
+        crumbsById,
+        crumbTrail: Object.values(crumbsById)
+            .sort((a, b) => a.to.pathname.length - b.to.pathname.length)
+    };
+}
+
 export function breadcrumbReducer(
-    state: IdentifiableCrumb[],
+    state: BreadcrumbState,
     action: BreadcrumbAction
-): IdentifiableCrumb[] {
+): BreadcrumbState {
     switch (action.type) {
-        case 'ADD':
-            return [
-                ...state,
-                { id: action.id, crumb: { ...action.crumb } },
-            ].sort(
-                (a, b) =>
-                    a.crumb.to.pathname.length - b.crumb.to.pathname.length
-            );
+        case 'DEL': {
+            const {
+                [action.id]: _discard,
+                ...crumbsById
+            } = state.crumbsById;
 
-        case 'UPDATE':
-            return state.map((crumb) => {
-                return crumb.id === action.id
-                    ? { id: action.id, crumb: { ...action.crumb } }
-                    : crumb;
-            });
+            return buildState(crumbsById);
+        }
 
-        case 'REMOVE':
-            return state.filter((crumb) => {
-                return crumb.id !== action.id;
+        case 'SET': {
+            return buildState({
+                ...state.crumbsById,
+                [action.id]: action.crumb
             });
+        }
 
         default:
             return state;

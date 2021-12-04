@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useResolvedPath } from 'react-router-dom';
 import { v4 as UUID } from 'uuid';
 import { BreadcrumbDispatchContext } from './BreadcrumbProvider';
@@ -20,18 +20,10 @@ export function useBreadcrumb(
     );
 
     useEffect(() => {
-        dispatch({ type: 'ADD', id, crumb });
-        return () => dispatch({ type: 'REMOVE', id });
-    }, []);
-
-    const firstRender = useRef(true);
+        dispatch({ type: 'SET', id, crumb });
+    }, [crumb]);
 
     useEffect(() => {
-        if (firstRender.current) {
-            firstRender.current = false;
-            return;
-        }
-
-        dispatch({ type: 'UPDATE', id, crumb });
-    }, [crumb]);
+        return () => dispatch({ type: 'DEL', id });
+    }, []);
 }
