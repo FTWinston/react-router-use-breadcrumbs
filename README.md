@@ -124,7 +124,7 @@ The `data` field is intended to support additional logic or considerations when 
 ### useBreadcrumbs
 
 This hook returns an array of the currently active breadcrumbs. Its elements can have 3 fields:
-- `to` (Path): A [history][6] Path object, with `pathname` and optional `search` and `hash` string fields.
+- `to` (object): A [history][6] path object, with `pathname` and optional `search` and `hash` string fields.
 - `title` (string|component): Text or component to display for this breadcrumb.
 - `data` (any): Optional extra data that you wish to associate with this breadcrumb.
 
