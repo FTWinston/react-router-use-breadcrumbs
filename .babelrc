@@ -21,6 +21,9 @@
             "implicitChildren": true
           }
         ]
+      ],
+      "ignore": [
+        "./src/examples"
       ]
     },
     "cjs": {
@@ -38,6 +41,9 @@
             "implicitChildren": true
           }
         ]
+      ],
+      "ignore": [
+        "./src/examples"
       ]
     },
     "test": {
