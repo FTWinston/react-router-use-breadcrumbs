@@ -11,7 +11,7 @@ export const SimpleCrumbs = () => {
             <ul>
                 {breadcrumbs.map((crumb) => (
                     <li key={crumb.to.pathname}>
-                        <NavLink to={crumb.to}>{crumb.title}</NavLink>
+                        <NavLink to={crumb.to} end>{crumb.title}</NavLink>
                     </li>
                 ))}
             </ul>
