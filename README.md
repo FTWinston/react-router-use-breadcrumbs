@@ -47,7 +47,7 @@ return (
 
 ### Example: separate title
 
-The "last" crumb's title can be thought of as the "current page's" title. You might wish to [render it separate to the "main" breadcrumbs][4].
+The "last" crumb's title can be thought of as the title of the current page. You might wish to [render it separately from the "main" breadcrumb trail][4].
 
 This can be down using a single call to the `useBreadcrumbs` hook, or from multiple calls by separate components.
 
@@ -71,7 +71,7 @@ return (
 );
 ```
 
-To take this a step further, you might wish to display different when rendering a crumb as the page title, compared to when rendering it in the breadcrumb trail. To suppor this, you could pass a "page title" to `useBreadcrumb` as the second `data` parameter, then use this when rendering:
+To take this a step further, you might wish to display different text when rendering a crumb as the page title, compared to when rendering it in the breadcrumb trail. To support this, you could pass a "page title" to `useBreadcrumb` as the second `data` parameter, then use this when rendering:
 
 ```jsx
 useBreadcrumb('Crumb Title', 'Page Title');
@@ -84,7 +84,7 @@ useBreadcrumb('Crumb Title', 'Page Title');
 
 ### Example: go up one level
 
-If the "last" crumb refers to the "current page," then the "second last" crumb refers to its parent. [Rendering just that breadcrumb][5] will provide a link to "go up one level."
+If the "last" crumb refers to the current page, then the "second last" crumb refers to its parent. [Rendering just that breadcrumb][5] will provide a link to "go up one level."
 
 ```jsx
 const breadcrumbs = useBreadcrumbs();
@@ -109,15 +109,14 @@ Doing so adds a crumb into the breadcrumb trail, which will be removed again if
 the component calling this hook stops rendering.
 
 - `title` (string|component): Text or component to display for this breadcrumb.
-- `data` (unknown|undefined): Optional extra data that you wish to associate with this breadcrumb.
+- `data` (any): Optional extra data that you wish to associate with this breadcrumb.
 
-The fact that the `title` can be any valid `PropTypes.node` allows for a huge
-amount of customization. The following values are all valid:
+Simple scenarios would pass a string as a breadcrumb's title, but the following are all valid:
 
 ```jsx
-title: 'Home'
-title: <span title="Hovered!">Home</span>
-title: <CustomComponent title="Home" icon="house" />
+useBreadcrumb('Home');
+useBreadcrumb(<span title="Hovered!">Home</span>);
+useBreadcrumb(<CustomComponent title="Home" icon="house" />);
 ```
 
 The `data` field is intended to support additional logic or considerations when breadcrumbs are being rendered. It won't be used in most scenarios.
@@ -127,11 +126,9 @@ The `data` field is intended to support additional logic or considerations when 
 This hook returns an array of the currently active breadcrumbs. Its elements can have 3 fields:
 - `to` (Path): A [history][6] Path object, with `pathname` and optional `search` and `hash` string fields.
 - `title` (string|component): Text or component to display for this breadcrumb.
-- `data` (unknown|undefined): Optional extra data that you wish to associate with this breadcrumb.
+- `data` (any): Optional extra data that you wish to associate with this breadcrumb.
 
-The `title` and `data` values are what was passed into the breadcrumb's corresponding `useBreadcrumb` call. The `to` value is calculated automatically.
-
-Typical usage is to render a `<NavLink>` component for each element of the returned array. Most scenarios won't use the `data` field.
+The `title` and `data` values are what was passed into the breadcrumb's corresponding `useBreadcrumb` call. The `to` value is calculated automatically, and can be passed directly to the `to` prop of a `<NavLink>` component.
 
 [1]: https://facebook.github.io/react
 [2]: https://github.com/rackt/react-router
