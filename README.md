@@ -13,7 +13,7 @@ npm install react-router-use-breadcrumbs
 ```
 
 This package has peer dependencies of `react-router-dom` v6 and `react` v16.8+.
-Its only direct dependency is `uuid`.
+Its only direct dependency is `nanoid`.
 
 It is not compatible with react-router v5, or older versions.
 
@@ -49,7 +49,7 @@ return (
 
 The "last" crumb's title can be thought of as the title of the current page. You might wish to [render it separately from the "main" breadcrumb trail][4].
 
-This can be down using a single call to the `useBreadcrumbs` hook, or from multiple calls by separate components.
+This can be done using a single call to the `useBreadcrumbs` hook, or by multiple calls from separate components.
 
 ```jsx
 const breadcrumbs = useBreadcrumbs();

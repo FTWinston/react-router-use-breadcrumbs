@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useResolvedPath } from 'react-router-dom';
-import { v4 as UUID } from 'uuid';
+import { nanoid } from 'nanoid/non-secure';
 import { BreadcrumbDispatchContext } from './BreadcrumbProvider';
 import { IBreadcrumb } from './IBreadcrumb';
 
@@ -8,7 +8,7 @@ export function useBreadcrumb(
     title: React.ReactElement | string,
     data?: unknown
 ) {
-    const [id] = useState(() => UUID());
+    const [id] = useState(() => nanoid());
 
     const { pathname, search, hash } = useResolvedPath('');
 
