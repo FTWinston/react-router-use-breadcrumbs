@@ -2,7 +2,7 @@
 
 [React][1] hooks that generate a breadcrumb trail, for use with [React Router][2].
 
-![Version badge](https://badgen.net/npm/v/react-router-use-breadcrumbs) ![Minified badge](https://badgen.net/bundlephobia/min/react-router-use-breadcrumbs) ![Minzipped badge](https://badgen.net/bundlephobia/minzip/react-router-use-breadcrumbs) ![Dependencies badge](https://badgen.net/bundlephobia/dependency-count/react-router-use-breadcrumbs) ![Types badge](https://badgen.net/npm/types/react-router-use-breadcrumbs)
+![Version badge](https://badgen.net/npm/v/react-router-use-breadcrumbs) ![Minified badge](https://badgen.net/bundlephobia/min/react-router-use-breadcrumbs) ![Minzipped badge](https://badgen.net/bundlephobia/minzip/react-router-use-breadcrumbs) ![Dependencies badge](https://badgen.net/bundlephobia/dependency-count/react-router-use-breadcrumbs) ![Types badge](https://badgen.net/npm/types/react-router-use-breadcrumbs) [![NodeJS CI](https://github.com/FTWinston/react-router-use-breadcrumbs/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/FTWinston/react-router-use-breadcrumbs/actions/workflows/test.yml)
 
 It is simple, flexible, and convenient.
 
