@@ -23,7 +23,7 @@ This package's `<BreadcrumbProvider>` component should be placed at the root of 
 
 Any component that you wish to render a breadcrumb for should call the `useBreadcrumb` hook, passing in text or a component to display. The breadcrumb's url will be calculated automatically.
 
-To access a breadcrumb trail, call the `useBreadcrumbs` hook, which returns an array of breadcrumb objects. Typical usage is to render a `<NavLink>` component for each of these.
+To access a breadcrumb trail, call the `useBreadcrumbs` hook, which returns an array of breadcrumb objects, with `to` and `title` fields. Typical usage is to render a `<NavLink>` component for each of these.
 
 Note that in the case of `index` `<Route />` components, `useBreadcrumb` should be called by the parent component (i.e. the one containing the `<Routes>`), rather than the component rendered by the `index` route. (Otherwise, its breadcrumb will only be active when you browse to the `index` route.)
 
