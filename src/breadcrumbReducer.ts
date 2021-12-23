@@ -1,10 +1,5 @@
 import { IBreadcrumb } from './IBreadcrumb';
 
-export interface IdentifiableCrumb {
-    id: string;
-    crumb: IBreadcrumb;
-}
-
 export interface BreadcrumbState {
     crumbsById: Record<string, IBreadcrumb>;
     crumbTrail: IBreadcrumb[];
@@ -25,6 +20,9 @@ function buildState(crumbsById: Record<string, IBreadcrumb>) {
     return {
         crumbsById,
         crumbTrail: Object.values(crumbsById)
+            // The path of each breadcrumb will include the path of the crumbs in the parent components, so sorting by path length will guarantee that the breadcrumbs are in the correct order,
+            // reflecting the nested heirachy. This approach contrasts with just using the order of invocation, for example, which could give incorrect results if there is a re-render part-way
+            // up the hierarchy, where it decides not to re-render a child component.
             .sort((a, b) => a.to.pathname.length - b.to.pathname.length)
     };
 }
